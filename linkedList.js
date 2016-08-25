@@ -9,7 +9,7 @@ function LinkedList() {
     };
 
     var headNode = function () {
-        this.next = null;
+        this.first = null;
         this.last = null;
     }
 
@@ -19,10 +19,10 @@ function LinkedList() {
     this.add = add;
     this.toString = toString;
     this.headNode = headNode;
+    this.remove = remove;
+    this.indexOf = indexOf;
     // this.insert = insert;
-    // this.remove = remove;
     // this.removeFrom = removeFrom;
-    // this.indexOf = indexOf;
     // this.hasElements = hasElements;
     // this.size = size;
     // this.headNode = headNode;
@@ -32,28 +32,102 @@ function LinkedList() {
         var currentNode;
         // Verificamos si es el primer nodo en la lista
         if (!hasElements()) {
-            headNode.next = node;
+            headNode.first = node;
             headNode.last = node;
-
         } else {
-            currentNode = headNode;
- 
-            // Este ciclo se ejecuta hasta que llegue al último elemento
-            while (currentNode.next) {
-                currentNode = currentNode.next;
-            }
- 
-            // Obtenemos el último elemento y lo asigamos a next para crear el enlace
+            currentNode = headNode.last;
             currentNode.next = node;
             headNode.last = node;
-        }
- 
-        // Incrementamos el tamaño de la lista
+         }
+         // Incrementamos el tamaño de la lista
         listSize++;
     }
 
-        function toString() {
-        var currentNode = headNode;
+
+
+    function remove(element) {
+        // removeFromIndex(index)
+        var nodeElement = getNodeFromElement(element);
+
+        if (headNode.first == nodeElement) {
+            headNode.first = nodeElement.next;
+            return element;
+
+        }
+        
+        currentNode = headNode.first;
+ 
+
+        while (currentNode.next =! nodeElement) {
+        // console.log('=======nodeElement=======');
+        // console.log(nodeElement);
+        // console.log(currentNode);
+        console.log('==============')
+
+            currentNode = currentNode.next;
+
+        }
+
+        currentNode.next = nodeElement.next;
+        
+        if (headNode.last == nodeElement) {
+            currentNode.next = null;
+            headNode.last = currentNode;
+        }
+        return nodeElement;
+    }
+
+    function removeFromIndex(index) {
+        
+        if (index < 0 || index>listSize-1) {
+            return -1;
+        }
+        
+        currentNode = headNode.first;
+
+        if (index == 0) {
+            headNode.first = currentNode.next;
+            return currentNode;
+        }
+        // getElement(index);
+        while (currentNode.next != 1) {
+            currentNode = currentNode.next;
+        }
+
+        if (index == listSize-1) {
+            headNode.last = currentNode;
+        }
+
+        [1,5,3]
+
+
+    }
+
+    function getNodeFromIndex(index) {
+        currentNode = headNode.first;
+        for (var i = 0; i <= index; i++) {
+            currentNode = currentNode.next;
+        }
+        return currentNode;
+        
+    }
+
+    function getNodeFromElement(element) {
+        currentNode = headNode.first;
+        var counter = 0;
+        while(currentNode.element != element){
+            if (counter >= listSize) return null;            
+            currentNode = currentNode.next;    
+            counter++;
+        }
+
+        return currentNode;
+    }
+
+
+
+    function toString() {
+        var currentNode = headNode.first;
         var str = '[';
  
         while (currentNode) {
@@ -68,6 +142,23 @@ function LinkedList() {
     function hasElements() {
         return listSize>0;
     }
+
+    function indexOf(element) {
+        var currentNode = headNode.first;
+        var index = 0;
+ 
+        while (currentNode) {
+            if (currentNode.element === element) {
+                return index;
+            }
+ 
+            index++;
+            currentNode = currentNode.next;
+        }
+ 
+        return -1;
+    }
+
 }
  
 //     function insert(element, pos) {
