@@ -1,4 +1,5 @@
 var LinkedList = require('./linkedList');
+
 var linkedList = new LinkedList();
 
 

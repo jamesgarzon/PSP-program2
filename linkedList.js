@@ -26,7 +26,7 @@ function LinkedList() {
     // this.hasElements = hasElements;
     // this.size = size;
     // this.headNode = headNode;
- 
+  
     function add(element) {
         var node = new Node(element);
         var currentNode;
@@ -52,20 +52,12 @@ function LinkedList() {
         if (headNode.first == nodeElement) {
             headNode.first = nodeElement.next;
             return element;
-
         }
-        
+
         currentNode = headNode.first;
- 
 
-        while (currentNode.next =! nodeElement) {
-        // console.log('=======nodeElement=======');
-        // console.log(nodeElement);
-        // console.log(currentNode);
-        console.log('==============')
-
+        while (currentNode.next != nodeElement) {
             currentNode = currentNode.next;
-
         }
 
         currentNode.next = nodeElement.next;
@@ -74,34 +66,35 @@ function LinkedList() {
             currentNode.next = null;
             headNode.last = currentNode;
         }
+        
         return nodeElement;
     }
 
-    function removeFromIndex(index) {
+    // function removeFromIndex(index) {
         
-        if (index < 0 || index>listSize-1) {
-            return -1;
-        }
+    //     if (index < 0 || index>listSize-1) {
+    //         return -1;
+    //     }
         
-        currentNode = headNode.first;
+    //     currentNode = headNode.first;
 
-        if (index == 0) {
-            headNode.first = currentNode.next;
-            return currentNode;
-        }
-        // getElement(index);
-        while (currentNode.next != 1) {
-            currentNode = currentNode.next;
-        }
+    //     if (index == 0) {
+    //         headNode.first = currentNode.next;
+    //         return currentNode;
+    //     }
+    //     // getElement(index);
+    //     while (currentNode.next != 1) {
+    //         currentNode = currentNode.next;
+    //     }
 
-        if (index == listSize-1) {
-            headNode.last = currentNode;
-        }
+    //     if (index == listSize-1) {
+    //         headNode.last = currentNode;
+    //     }
 
-        [1,5,3]
+    //     [1,5,3]
 
 
-    }
+    // }
 
     function getNodeFromIndex(index) {
         currentNode = headNode.first;
