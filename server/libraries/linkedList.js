@@ -3,8 +3,9 @@ function LinkedList() {
     var listSize = 0;
     var headNode = null;
 
-    var Node = function(element){
-        this.element = element;
+    var Node = function(element1, element2){
+        this.element1 = element1;
+        this.element2 = element2;
         this.next = null;
     };
 
@@ -22,6 +23,8 @@ function LinkedList() {
     this.remove = remove;
     this.indexOf = indexOf;
     this.getSize = getSize;
+    this.getNodeFromElements = getNodeFromElements;
+    this.getNodeFromIndex = getNodeFromIndex;
 
     // this.insert = insert;
     // this.removeFrom = removeFrom;
@@ -32,8 +35,8 @@ function LinkedList() {
       return listSize;
     }
 
-    function add(element) {
-        var node = new Node(element);
+    function add(element1, element2) {
+        var node = new Node(element1, element2);
         var currentNode;
         if (!hasElements()) {
             headNode.first = node;
@@ -48,37 +51,40 @@ function LinkedList() {
 
 
 
-    function remove(element) {
-        var nodeElement = getNodeFromElement(element);
-        if (headNode.first == nodeElement) {
-            headNode.first = nodeElement.next;
-            return element;
+    function remove(element1, element2) {
+        var nodeElements = getNodeFromElements(element1, element2);
+        if (nodeElements == null) {
+          return null;
+        }
+        if (headNode.first == nodeElements) {
+            headNode.first = nodeElements.next;
+            return nodeElements;
         }
 
         currentNode = headNode.first;
 
-        while (currentNode.next != nodeElement) {
+        while (currentNode.next != nodeElements) {
             currentNode = currentNode.next;
         }
 
-        currentNode.next = nodeElement.next;
+        currentNode.next = nodeElements.next;
 
-        if (headNode.last == nodeElement) {
+        if (headNode.last == nodeElements) {
             currentNode.next = null;
             headNode.last = currentNode;
         }
 
-        return nodeElement;
+        return nodeElements;
     }
 
     // function removeFromIndex(index) {
-
+    //
     //     if (index < 0 || index>listSize-1) {
     //         return -1;
     //     }
-
+    //
     //     currentNode = headNode.first;
-
+    //
     //     if (index == 0) {
     //         headNode.first = currentNode.next;
     //         return currentNode;
@@ -87,29 +93,32 @@ function LinkedList() {
     //     while (currentNode.next != 1) {
     //         currentNode = currentNode.next;
     //     }
-
+    //
     //     if (index == listSize-1) {
     //         headNode.last = currentNode;
     //     }
-
+    //
     //     [1,5,3]
-
-
+    //
+    //
     // }
 
     function getNodeFromIndex(index) {
+        if (index == -1 || index > listSize) {
+          return null;
+        }
         currentNode = headNode.first;
-        for (var i = 0; i <= index; i++) {
+        for (var i = 0; i < index; i++) {
             currentNode = currentNode.next;
         }
         return currentNode;
 
     }
 
-    function getNodeFromElement(element) {
+    function getNodeFromElements(element1, element2) {
         currentNode = headNode.first;
         var counter = 0;
-        while(currentNode.element != element){
+        while(currentNode.element1 != element1 || currentNode.element2 != element2){
             if (counter >= listSize) return null;
             currentNode = currentNode.next;
             counter++;
@@ -125,7 +134,7 @@ function LinkedList() {
         var str = '[';
 
         while (currentNode) {
-            str += currentNode.element + ',';
+            str += currentNode.element1 + ',' + currentNode.element2 + ';';
             currentNode = currentNode.next;
         }
         str = str.substring(0,str.length-1);
@@ -138,12 +147,12 @@ function LinkedList() {
         return listSize>0;
     }
 
-    function indexOf(element) {
+    function indexOf(element1,element2) {
         var currentNode = headNode.first;
         var index = 0;
 
         while (currentNode) {
-            if (currentNode.element === element) {
+            if (currentNode.element1 === element1 && currentNode.element2 === element2) {
                 return index;
             }
 
@@ -191,11 +200,6 @@ function LinkedList() {
 //         return false;
 //     }
 
-//     function remove(element) {
-//         var index = this.indexOf(element);
-
-//         return this.removeFrom(index-1);
-//     }
 
 //     function removeFrom(pos) {
 
@@ -256,25 +260,6 @@ function LinkedList() {
 //         return -1;
 //     }
 
-//     function hasElements() {
-//         return listSize > 0;
-//     }
-
-//     function size() {
-//         return listSize;
-//     }
-
-//     function toString() {
-//         var currentNode = headNode;
-//         var str = '|';
-
-//         while (currentNode) {
-//             str += currentNode.element + '|';
-//             currentNode = currentNode.next;
-//         }
-
-//         return str;
-//     }
 // }
 
  module.exports =(LinkedList);
