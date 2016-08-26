@@ -7,7 +7,7 @@ let should = chai.should();
 
 chai.use(chaiHttp);
 
-describe('Books', () => {
+describe('Statistics', () => {
     beforeEach((done) => {
         // Book.remove({}, (err) => {
            done();
