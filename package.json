@@ -10,7 +10,8 @@
     "config": "^1.20.1",
     "express": "^4.13.4",
     "mongoose": "^4.4.15",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "multer": "^1.2.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -19,6 +20,6 @@
   },
   "scripts": {
     "start": "export NODE_ENV=dev && (nodemon server/server.js || node server/server.js)",
-    "test": "mocha server/test --timeout 10000"
+    "test": "mocha server/test --timeout 10000 --recursive"
   }
 }
