@@ -79,3 +79,35 @@ describe('Covariance', () => {
 
 
 });
+
+describe('BOne', () => {
+    beforeEach((done) => {
+        done();
+    });
+
+    describe('Get B1 with good data', function() {
+        it('List should start empty', function() {
+            let numbers = [[2,1],[3,3],[4,2],[4,4],[5,4],[6,4],[6,6],[7,4],[7,6],[8,7],[10,9],[10,10]];
+            let statistics = new Statistics();
+            let bOne = statistics.getBOne(numbers);
+            assert.equal(bOne, 0.986);
+        });
+    });
+
+});
+
+describe('BOne', () => {
+    beforeEach((done) => {
+        done();
+    });
+
+    describe('Get B1 with good data', function() {
+        it('List should start empty', function() {
+            let numbers = [[2,1],[3,3],[4,2],[4,4],[5,4],[6,4],[6,6],[7,4],[7,6],[8,7],[10,9],[10,10]];
+            let statistics = new Statistics();
+            let bZero = statistics.getBZero(numbers);
+            assert.equal(bZero, -0.916);
+        });
+    });
+
+});
