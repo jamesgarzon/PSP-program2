@@ -1,5 +1,5 @@
-
 let express = require('express');
+const path = require('path');
 let app = express();
 // let mongoose = require('mongoose');
 let morgan = require('morgan');
@@ -7,6 +7,8 @@ let bodyParser = require('body-parser');
 let port = 8080;
 let statistic = require('./controllers/routes/statistic');
 let config = require('config'); //we load the db location from the JSON files
+
+let root = path.normalize(__dirname + '/..');
 
 //db options
 // let options = {
@@ -23,13 +25,21 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
     app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
 }
 
+app.set('appPath', path.join(root, 'client'));
+app.use(express.static(app.get('appPath')));
+app.set('views', root + '/client/views');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 //parse application/json and look for raw text
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json'}));
 
-app.get("/", (req, res) => res.json({message: "Welcome to our Statistics program!"}));
+app.get("/", function(req,res) {
+  res.render("index");
+})
 
 app.route("/statistics")
     .post(statistic.getMean);
