@@ -3,6 +3,7 @@
 ###Procedimiento de instalación
 * npm install -g nodemon
 * npm install
+* bower install
 
 ###Para correr el proyecto
 * npm start
