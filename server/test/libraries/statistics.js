@@ -193,7 +193,7 @@ describe('BettaZero (B0)', () => {
 });
 
 
-//CASOS DE PRUEBA PARA LA CORRELACIÓN
+//CASOS DE PRUEBA PARA OBTENER LA CORRELACIÓN
 // =================================================================
 describe('CORRELATION', () => {
     beforeEach((done) => {
@@ -233,6 +233,97 @@ describe('CORRELATION', () => {
             let statistics = new Statistics();
             let correlation = statistics.getCorrelation(numbers, 4);
             assert.equal(correlation, 0.9480 );
+        });
+    });
+
+});
+
+//CASOS DE PRUEBA PARA OBTENER EL R CUADRADO
+// =================================================================
+describe('R SQUARED', () => {
+    beforeEach((done) => {
+        done();
+    });
+
+    describe('Test 1 - PSP PROGRAM', function() {
+        it('Return the rSquared from the data of the PSP PROGRAM', function() {
+            let numbers = [ [130, 186] , [650, 699], [99, 132], [150, 272], [128, 291], [302, 331], [95, 199], [945, 1890], [368, 788], [961, 1601]];
+            let statistics = new Statistics();
+            let rSquared = statistics.getRSquared(numbers, 4);
+            assert.equal(rSquared, 0.9111 );
+        });
+    });
+
+    describe('Test 2 - PSP PROGRAM', function() {
+        it('Return the rSquared from the data of the PSP PROGRAM', function() {
+            let numbers = [[130, 15.0], [650, 69.9], [99, 6.5], [150, 22.4], [128, 28.4], [302, 65.9], [95, 19.4], [945, 198.7], [368, 38.8], [961, 138.2]];
+            let statistics = new Statistics();
+            let rSquared = statistics.getRSquared(numbers, 4);
+            assert.equal(rSquared, .8711  );
+        });
+    });
+
+    describe('Test 3 - PSP PROGRAM', function() {
+        it('Return the rSquared from the data of the PSP PROGRAM', function() {
+            let numbers = [[163, 186], [765, 699], [141, 132], [166, 272], [137, 291], [355, 331], [136, 199], [1206, 1890], [433, 788], [1130, 1601]];
+            let statistics = new Statistics();
+            let rSquared = statistics.getRSquared(numbers, 4);
+            assert.equal(rSquared, .9276 );
+        });
+    });
+
+    describe('Test 4 - PSP PROGRAM', function() {
+        it('Return the rSquared from the data of the PSP PROGRAM', function() {
+            let numbers = [[163, 15.0], [765, 69.9], [141, 6.5], [166, 22.4], [137, 28.4], [355, 65.9], [136, 19.4], [1206, 198.7], [433, 38.8], [1130, 138.2]];
+            let statistics = new Statistics();
+            let rSquared = statistics.getRSquared(numbers, 4);
+            assert.equal(rSquared, .8988 );
+        });
+    });
+
+});
+
+
+//CASOS DE PRUEBA PARA OBTENER EL Y ESTIMADO
+// =================================================================
+describe('Y ESTIMATE (Yk)', () => {
+    beforeEach((done) => {
+        done();
+    });
+
+    describe('Test 1 - PSP PROGRAM', function() {
+        it('Return the Y Estimate from the data of the PSP PROGRAM', function() {
+            let numbers = [ [130, 186] , [650, 699], [99, 132], [150, 272], [128, 291], [302, 331], [95, 199], [945, 1890], [368, 788], [961, 1601]];
+            let statistics = new Statistics();
+            let yEstimate = statistics.getYEstimate(numbers, 386, 3);
+            assert.equal(yEstimate, 644.429 );
+        });
+    });
+
+    describe('Test 2 - PSP PROGRAM', function() {
+        it('Return the Y Estimate from the data of the PSP PROGRAM', function() {
+            let numbers = [[130, 15.0], [650, 69.9], [99, 6.5], [150, 22.4], [128, 28.4], [302, 65.9], [95, 19.4], [945, 198.7], [368, 38.8], [961, 138.2]];
+            let statistics = new Statistics();
+            let yEstimate = statistics.getYEstimate(numbers, 386, 3);
+            assert.equal(yEstimate, 60.858  );
+        });
+    });
+
+    describe('Test 3 - PSP PROGRAM', function() {
+        it('Return the Y Estimate from the data of the PSP PROGRAM', function() {
+            let numbers = [[163, 186], [765, 699], [141, 132], [166, 272], [137, 291], [355, 331], [136, 199], [1206, 1890], [433, 788], [1130, 1601]];
+            let statistics = new Statistics();
+            let yEstimate = statistics.getYEstimate(numbers, 386, 4);
+            assert.equal(yEstimate, 528.4294 );
+        });
+    });
+
+    describe('Test 4 - PSP PROGRAM', function() {
+        it('Return the Y Estimate from the data of the PSP PROGRAM', function() {
+            let numbers = [[163, 15.0], [765, 69.9], [141, 6.5], [166, 22.4], [137, 28.4], [355, 65.9], [136, 19.4], [1206, 198.7], [433, 38.8], [1130, 138.2]];
+            let statistics = new Statistics();
+            let yEstimate = statistics.getYEstimate(numbers, 386, 4);
+            assert.equal(yEstimate, 49.4994 );
         });
     });
 

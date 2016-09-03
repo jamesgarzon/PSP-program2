@@ -4,7 +4,9 @@ function Statistics() {
   this.getBOne= getBOne;
   this.getBZero= getBZero;
   this.getCorrelation= getCorrelation;
-
+  this.getRSquared = getRSquared;
+  this.getYEstimate = getYEstimate;
+  
   function getMean(numbers){
     let sum = 0;
     if (Array.isArray(numbers)) {
@@ -81,13 +83,11 @@ function Statistics() {
     numbers.forEach(number=>{
       let x = number[0];
       let y = number[1];
-
       sum_x += x;
       sum_y += y;
       sum_xy += x*y;
       sum_xx += x*x;
       sum_yy += y*y;
-
     })
 
     correlation = ( (n*sum_xy) - (sum_x*sum_y) );
@@ -95,9 +95,27 @@ function Statistics() {
 
     if (decimals) {
       correlation = Math.round(correlation * (Math.pow(10, decimals)))/(Math.pow(10, decimals));
-
     }
     return correlation;
+  }
+
+  function getRSquared(numbers, decimals) {
+    let correlation = getCorrelation(numbers);
+    let rSquared = correlation * correlation;
+    if (decimals) {
+      rSquared = Math.round(rSquared * (Math.pow(10, decimals)))/(Math.pow(10, decimals));
+    }
+    return rSquared;
+  }
+
+  function getYEstimate(numbers, xEstimate, decimals) {
+    let B0 = getBZero(numbers);
+    let B1 = getBOne(numbers);
+    let yEstimate = B0 + B1*xEstimate;
+    if (decimals) {
+      yEstimate = Math.round(yEstimate * (Math.pow(10, decimals)))/(Math.pow(10, decimals));
+    }
+    return yEstimate;
   }
 
 }
