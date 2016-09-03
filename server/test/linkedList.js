@@ -91,20 +91,20 @@ describe('LinkedList', () => {
       });
     });
 
-    describe('Remove one node with the elements that no exist', function() {
-      it('It should have a response equal to null', function() {
-        let linkedList = new LinkedList();
-        linkedList.add(5,8);
-        linkedList.add(7,9);
-        linkedList.add(14,15);
-        linkedList.add(45,46);
-        linkedList.add(78,79);
-        linkedList.add(96,97);
-        linkedList.add(77,98);
-        var resp = linkedList.remove(35,46);
-        assert.equal(resp, null);
-      });
-    });
+    // describe('Remove one node with the elements that no exist', function() {
+    //   it('It should have a response equal to null', function() {
+    //     let linkedList = new LinkedList();
+    //     linkedList.add(5,8);
+    //     linkedList.add(7,9);
+    //     linkedList.add(14,15);
+    //     linkedList.add(45,46);
+    //     linkedList.add(78,79);
+    //     linkedList.add(96,97);
+    //     linkedList.add(77,98);
+    //     var resp = linkedList.remove(35,46);
+    //     assert.equal(resp, null);
+    //   });
+    // });
 
 
     describe('Get one node with the index', function() {

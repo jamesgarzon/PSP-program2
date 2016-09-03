@@ -3,6 +3,7 @@ function Statistics() {
   this.getCovariance = getCovariance;
   this.getBOne= getBOne;
   this.getBZero= getBZero;
+  this.getCorrelation= getCorrelation;
 
   function getMean(numbers){
     let sum = 0;
@@ -69,53 +70,35 @@ function Statistics() {
     return bOne;
   }
 
-  // function getBOne(numbers){
-  //   let n = numbers.length;
-  //   let sum_x = 0;
-  //   let sum_y = 0;
-  //   let sum_xy = 0;
-  //   let sum_xx = 0;
-  //   let bettaOne = 0;
-  //
-  //   numbers.forEach(number=>{
-  //     let x = number[0];
-  //     let y = number[1];
-  //
-  //     sum_x += x;
-  //     sum_y += y;
-  //     sum_xx += x*x;
-  //     sum_xy += x*y;
-  //   })
-  //
-  //   bettaOne = (n*sum_xy - sum_x*sum_y) / (n*sum_xx - sum_x*sum_x);
-  //   bettaOne = Math.round(bettaOne * 1000)/1000;
-  //
-  //   return bettaOne;
-  // }
+  function getCorrelation(numbers, decimals) {
+    let sum_xy = 0;
+    let sum_x = 0;
+    let sum_y = 0;
+    let sum_xx = 0;
+    let sum_yy = 0;
+    let n = numbers.length;
+    let correlation = 0;
+    numbers.forEach(number=>{
+      let x = number[0];
+      let y = number[1];
 
-    //
-    // function getBZero(numbers){
-    //   let n = numbers.length;
-    //   let sum_x = 0;
-    //   let sum_y = 0;
-    //   let sum_xy = 0;
-    //   let sum_xx = 0;
-    //   let bettaZero = 0;
-    //   let bettaOne = 0;
-    //
-    //   numbers.forEach(number=>{
-    //     let x = number[0];
-    //     let y = number[1];
-    //
-    //     sum_x += x;
-    //     sum_y += y;
-    //   })
-    //   bettaOne = getBOne(numbers);
-    //   bettaZero = (sum_y/n) - (bettaOne*sum_x)/n;
-    //   bettaZero = Math.round(bettaZero * 1000)/1000;
-    //
-    //   return bettaZero;
-    // }
+      sum_x += x;
+      sum_y += y;
+      sum_xy += x*y;
+      sum_xx += x*x;
+      sum_yy += y*y;
+
+    })
+
+    correlation = ( (n*sum_xy) - (sum_x*sum_y) );
+    correlation = correlation / Math.sqrt( ((n*sum_xx) - sum_x*sum_x) * ( (n*sum_yy) - (sum_y*sum_y) ) );
+
+    if (decimals) {
+      correlation = Math.round(correlation * (Math.pow(10, decimals)))/(Math.pow(10, decimals));
+
+    }
+    return correlation;
+  }
 
 }
 module.exports =(Statistics);

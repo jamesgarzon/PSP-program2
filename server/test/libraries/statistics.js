@@ -6,55 +6,56 @@ var assert = chai.assert;
 
 // chai.use(chaiHttp);
 
-// describe('MEAN', () => {
-//     beforeEach((done) => {
-//       done();
-//     });
-//
-//     describe('getMean with no params', function() {
-//       it('List should start empty', function() {
-//         let statistics = new Statistics();
-//         let mean = statistics.getMean();
-//         assert.equal(mean, null);
-//       });
-//     });
-//
-//     describe('getMean with a number', function() {
-//       it('List should start empty', function() {
-//         let statistics = new Statistics();
-//         let mean = statistics.getMean(5);
-//         assert.equal(mean, null);
-//       });
-//     });
-//
-//     describe('getMean with a letter', function() {
-//       it('List should start empty', function() {
-//         let statistics = new Statistics();
-//         let mean = statistics.getMean('a');
-//         assert.equal(mean, null);
-//       });
-//     });
-//
-//     describe('getMean with a bad array', function() {
-//       it('List should start empty', function() {
-//         let statistics = new Statistics();
-//         let mean = statistics.getMean([4,'a']);
-//         assert.equal(mean, null);
-//       });
-//     });
-//
-//     describe('getMean with good data', function() {
-//       it('List should start empty', function() {
-//         let numbers = [2,3,4,4,5,6,6,7,7,8,10,10];
-//         let statistics = new Statistics();
-//         let mean = statistics.getMean(numbers);
-//         assert.equal(mean, 6);
-//       });
-//     });
-//
-//
-// });
-//
+describe('MEAN', () => {
+    beforeEach((done) => {
+      done();
+    });
+
+    describe('getMean with no params', function() {
+      it('List should start empty', function() {
+        let statistics = new Statistics();
+        let mean = statistics.getMean();
+        assert.equal(mean, null);
+      });
+    });
+
+    describe('getMean with a number', function() {
+      it('List should start empty', function() {
+        let statistics = new Statistics();
+        let mean = statistics.getMean(5);
+        assert.equal(mean, null);
+      });
+    });
+
+    describe('getMean with a letter', function() {
+      it('List should start empty', function() {
+        let statistics = new Statistics();
+        let mean = statistics.getMean('a');
+        assert.equal(mean, null);
+      });
+    });
+
+    describe('getMean with a bad array', function() {
+      it('List should start empty', function() {
+        let statistics = new Statistics();
+        let mean = statistics.getMean([4,'a']);
+        assert.equal(mean, null);
+      });
+    });
+
+    describe('getMean with good data', function() {
+      it('List should start empty', function() {
+        let numbers = [2,3,4,4,5,6,6,7,7,8,10,10];
+        let statistics = new Statistics();
+        let mean = statistics.getMean(numbers);
+        assert.equal(mean, 6);
+      });
+    });
+
+
+});
+
+
 // describe('Covariance', () => {
 //     beforeEach((done) => {
 //       done();
@@ -137,14 +138,14 @@ describe('BettaOne (B1)', () => {
 });
 
 
-//CASOS DE PRUEBA PARA OBTENER BETTA UNO
+//CASOS DE PRUEBA PARA OBTENER BETTA ZERO
 // =================================================================
-describe('BettaOne (B1)', () => {
+describe('BettaZero (B0)', () => {
     beforeEach((done) => {
         done();
     });
 
-    describe('Get B1 with good data', function() {
+    describe('Get B0 with good data', function() {
         it('List should start empty', function() {
             let numbers = [[2,1],[3,3],[4,2],[4,4],[5,4],[6,4],[6,6],[7,4],[7,6],[8,7],[10,9],[10,10]];
             let statistics = new Statistics();
@@ -154,7 +155,7 @@ describe('BettaOne (B1)', () => {
     });
 
     describe('Test 1 - PSP PROGRAM', function() {
-        it('Return B1 with the data of the PSP PROGRAM', function() {
+        it('Return B0 with the data of the PSP PROGRAM', function() {
             let numbers = [ [130, 186] , [650, 699], [99, 132], [150, 272], [128, 291], [302, 331], [95, 199], [945, 1890], [368, 788], [961, 1601]];
             let statistics = new Statistics();
             let bettaZero = statistics.getBZero(numbers, 2);
@@ -163,7 +164,7 @@ describe('BettaOne (B1)', () => {
     });
 
     describe('Test 2 - PSP PROGRAM', function() {
-        it('Return B1 with the data of the PSP PROGRAM', function() {
+        it('Return B0 with the data of the PSP PROGRAM', function() {
             let numbers = [[130, 15.0], [650, 69.9], [99, 6.5], [150, 22.4], [128, 28.4], [302, 65.9], [95, 19.4], [945, 198.7], [368, 38.8], [961, 138.2]];
             let statistics = new Statistics();
             let bettaZero = statistics.getBZero(numbers, 3);
@@ -172,7 +173,7 @@ describe('BettaOne (B1)', () => {
     });
 
     describe('Test 3 - PSP PROGRAM', function() {
-        it('Return B1 with the data of the PSP PROGRAM', function() {
+        it('Return B0 with the data of the PSP PROGRAM', function() {
             let numbers = [[163, 186], [765, 699], [141, 132], [166, 272], [137, 291], [355, 331], [136, 199], [1206, 1890], [433, 788], [1130, 1601]];
             let statistics = new Statistics();
             let bettaZero = statistics.getBZero(numbers, 2);
@@ -181,11 +182,57 @@ describe('BettaOne (B1)', () => {
     });
 
     describe('Test 4 - PSP PROGRAM', function() {
-        it('Return B1 with the data of the PSP PROGRAM', function() {
+        it('Return B0 with the data of the PSP PROGRAM', function() {
             let numbers = [[163, 15.0], [765, 69.9], [141, 6.5], [166, 22.4], [137, 28.4], [355, 65.9], [136, 19.4], [1206, 198.7], [433, 38.8], [1130, 138.2]];
             let statistics = new Statistics();
             let bettaZero = statistics.getBZero(numbers, 3);
             assert.equal(bettaZero, -4.604  );
+        });
+    });
+
+});
+
+
+//CASOS DE PRUEBA PARA LA CORRELACIÓN
+// =================================================================
+describe('CORRELATION', () => {
+    beforeEach((done) => {
+        done();
+    });
+
+    describe('Test 1 - PSP PROGRAM', function() {
+        it('Return the correlation from the data of the PSP PROGRAM', function() {
+            let numbers = [ [130, 186] , [650, 699], [99, 132], [150, 272], [128, 291], [302, 331], [95, 199], [945, 1890], [368, 788], [961, 1601]];
+            let statistics = new Statistics();
+            let correlation = statistics.getCorrelation(numbers, 4);
+            assert.equal(correlation, 0.9545 );
+        });
+    });
+
+    describe('Test 2 - PSP PROGRAM', function() {
+        it('Return the correlation from the data of the PSP PROGRAM', function() {
+            let numbers = [[130, 15.0], [650, 69.9], [99, 6.5], [150, 22.4], [128, 28.4], [302, 65.9], [95, 19.4], [945, 198.7], [368, 38.8], [961, 138.2]];
+            let statistics = new Statistics();
+            let correlation = statistics.getCorrelation(numbers, 4);
+            assert.equal(correlation, 0.9333  );
+        });
+    });
+
+    describe('Test 3 - PSP PROGRAM', function() {
+        it('Return the correlation from the data of the PSP PROGRAM', function() {
+            let numbers = [[163, 186], [765, 699], [141, 132], [166, 272], [137, 291], [355, 331], [136, 199], [1206, 1890], [433, 788], [1130, 1601]];
+            let statistics = new Statistics();
+            let correlation = statistics.getCorrelation(numbers, 4);
+            assert.equal(correlation, 0.9631 );
+        });
+    });
+
+    describe('Test 4 - PSP PROGRAM', function() {
+        it('Return the correlation from the data of the PSP PROGRAM', function() {
+            let numbers = [[163, 15.0], [765, 69.9], [141, 6.5], [166, 22.4], [137, 28.4], [355, 65.9], [136, 19.4], [1206, 198.7], [433, 38.8], [1130, 138.2]];
+            let statistics = new Statistics();
+            let correlation = statistics.getCorrelation(numbers, 4);
+            assert.equal(correlation, 0.9480 );
         });
     });
 
