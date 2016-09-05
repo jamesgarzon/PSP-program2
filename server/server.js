@@ -22,10 +22,11 @@ let root = path.normalize(__dirname + '/..');
 //don't show the log when it is test
 if(config.util.getEnv('NODE_ENV') !== 'test') {
     //use morgan to log at command line
-    app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
+    app.use(morgan('tiny')); //'combined' outputs the Apache style LOGs
 }
 
 app.set('appPath', path.join(root, 'client'));
+// app.set('appPath', path.join(root, 'bower_components'));
 app.use(express.static(app.get('appPath')));
 app.set('views', root + '/client/views');
 app.engine('html', require('ejs').renderFile);
@@ -37,9 +38,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json'}));
 
-app.get("/", function(req,res) {
-  res.render("index");
-})
+// app.get("/", function(req,res) {
+//   res.render("index");
+// })
 
 app.route("/statistics")
     .post(statistic.getMean);
@@ -48,6 +49,11 @@ app.route("/statistics")
 //     .get(book.getBook)
 //     .delete(book.deleteBook)
 //     .put(book.updateBook);
+
+app.route('/*')
+  .get((req, res) => {
+    res.sendFile(path.resolve(app.get('appPath') + '/index.html'));
+  });
 
 app.listen(port);
 console.log("Listening on port " + port);
