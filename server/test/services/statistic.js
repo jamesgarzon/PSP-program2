@@ -4,6 +4,7 @@ let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../../server');
 let should = chai.should();
+let fs = require('fs');
 
 chai.use(chaiHttp);
 
@@ -41,11 +42,10 @@ describe('Statistics', () => {
   */
   describe('/POST statistics/regression', () => {
       it('it should not POST a book without pages field', (done) => {
-        let numbers = [ [130, 186] , [650, 699], [99, 132], [150, 272], [128, 291], [302, 331], [95, 199], [945, 1890], [368, 788], [961, 1601]];
-        // let answer = { "bZero" : -0.917,"bOne": 0.986 };
         chai.request(server)
             .post('/statistics/regression')
-            .send(numbers)
+            .attach('data', './server/test/data/test1.txt')
+            // .send({})
             .end((err, res) => {
                 res.should.have.status(200);
                 res.should.be.json;
@@ -72,7 +72,8 @@ describe('Statistics', () => {
         // let answer = { "bZero" : -0.917,"bOne": 0.986 };
         chai.request(server)
             .post('/statistics/correlation')
-            .send(numbers)
+            // .send(numbers)
+            .attach('data', './server/test/data/test1.txt')
             .end((err, res) => {
                 res.should.have.status(200);
                 res.should.be.json;
@@ -98,7 +99,8 @@ describe('Statistics', () => {
         // let answer = { "bZero" : -0.917,"bOne": 0.986 };
         chai.request(server)
             .post('/statistics/estimate')
-            .send({list:list, xEstimate:386})
+            .attach('data', './server/test/data/test1.txt')
+            .field('xEstimate', 386)
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('number'); 

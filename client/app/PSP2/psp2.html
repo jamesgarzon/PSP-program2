@@ -1,26 +1,58 @@
-Wellcome to the second program psp
+<h2 class="center">Programa PSP 2</h2>
 
-
-<div class="col s8">
-	<div class="row">
-		<div class="col s4">
-			<b>IMAGEN</b>
-			<a class="waves-effect waves-light btn btn-floating indigo" ngf-select="vm.getStatistics($file)" ><i class="material-icons right">insert_photo</i></a>
-		</div>
-		<div class="col s8">
-		</div>
+<div class="container z-depth-1">
+<br>
+<div class="container">
+		<div class="row">
+			<div class="col s6">
+				<b>DATOS</b>
+				<br>
+				<a class="waves-effect waves-light btn  indigo" ngf-select="vm.getStatistics($file)" ng-disabled="!vm.xEstimate" >Seleccionar datos <i class="material-icons right">storage</i></a>
+			</div>
+			<div class="input-field col s6">
+	          <input id="first_name" type="text" class="validate" ng-model="vm.xEstimate">
+	          <label for="first_name">X Estimado</label>
+	        </div>
+			<br>
 	</div>
+    <div class="row" ng-if="vm.regression">
+      
+      <div class="col s12 m4">
+        <div class="card-panel teal">
+        <h5 class="white-text">REGRESIÓN</h5>
+          <span class="white-text">
+          <p><b>&beta;<sub>0</sub> :</b> {{vm.regression.bZero}} </p>
+          <p><b>&beta;<sub>1</sub> :</b> {{vm.regression.bOne}} </p>
+          </span>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="card-panel teal">
+        <h5 class="white-text">CORRELACIÓN</h5>
+          <span class="white-text">
+          <p><b>R:</b> {{vm.regression.bZero}} </p>
+          <p><b>R<sup>2</sup> :</b> {{vm.regression.bOne}} </p>
+          </span>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="card-panel teal">
+        <h5 class="white-text">ESTIMADO</h5>
+          <span class="white-text">
+          <p><b>X: </b> {{vm.xEstimate}} </p>
+          <p><b>Y: </b> {{vm.yEstimate}} </p>
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+            
 </div>
 
-REGRESSION
-<p> BettaZero : {{vm.regression.bZero}} </p>
-<p> BettaOne : {{vm.regression.bOne}} </p>
 
-<hr>
-CORRELATION
-<p> R : {{vm.correlation.r}} </p>
-<p> R² : {{vm.correlation.rSquare}} </p>
-<hr>
 
-ESTIMATE
-<p> Y(Estimado) : {{vm.yEstimate}} </p>
+</div>
+
