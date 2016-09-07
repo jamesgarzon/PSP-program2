@@ -7,6 +7,8 @@ let bodyParser = require('body-parser');
 let port = 8080;
 let statistic = require('./controllers/routes/statistic');
 let config = require('config'); //we load the db location from the JSON files
+var multer  = require('multer');
+var upload = multer();
 
 let root = path.normalize(__dirname + '/..');
 
@@ -42,13 +44,15 @@ app.use(bodyParser.json({ type: 'application/json'}));
 //   res.render("index");
 // })
 
-app.route("/statistics")
-    .post(statistic.getMean);
-    // .post(book.postBook);
-// app.route("/book/:id")
-//     .get(book.getBook)
-//     .delete(book.deleteBook)
-//     .put(book.updateBook);
+app.route("/statistics/mean").post(statistic.getMean);
+app.route("/statistics/regression").post(statistic.getRegression);
+app.route("/statistics/correlation").post(statistic.getCorrelation);
+app.route("/statistics/estimate").post(statistic.getEstimate);
+app.post('/profile', upload.array(), function (req, res, next) {
+  // req.body contains the text fields
+  console.log(req.body);
+})
+
 
 app.route('/*')
   .get((req, res) => {
@@ -59,3 +63,9 @@ app.listen(port);
 console.log("Listening on port " + port);
 
 module.exports = app; // for testing
+
+
+
+
+
+
