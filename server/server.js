@@ -45,13 +45,21 @@ app.use(bodyParser.json({ type: 'application/json'}));
 // })
 
 app.route("/statistics/mean").post(statistic.getMean);
-app.route("/statistics/regression").post(statistic.getRegression);
-app.route("/statistics/correlation").post(statistic.getCorrelation);
-app.route("/statistics/estimate").post(statistic.getEstimate);
-app.post('/profile', upload.array(), function (req, res, next) {
-  // req.body contains the text fields
-  console.log(req.body);
-})
+// app.route("/statistics/regression").post(statistic.getRegression);
+app.route("/statistics/regression").post(upload.single('data'),statistic.getRegression);
+app.route("/statistics/correlation").post(upload.single('data'),statistic.getCorrelation);
+app.route("/statistics/estimate").post(upload.single('data'),statistic.getEstimate);
+// app.route("upload").post(upload.array(), function (req, res, next) {
+//   // req.body contains the text fields
+//   console.log(req.body);
+// })
+
+// app.post('/upload', upload.single('profile'), function (req, res, next) {
+//   console.log(req.file);
+//   var data  = JSON.parse(req.file.buffer.toString('utf8'));
+//   res.json(data);
+// })
+
 
 
 app.route('/*')

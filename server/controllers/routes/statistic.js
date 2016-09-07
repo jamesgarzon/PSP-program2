@@ -13,7 +13,7 @@ function getMean(req, res) {
 
 function getRegression(req, res) {
     let data = {};
-    let list  = req.body;
+    var list  = JSON.parse(req.file.buffer.toString('utf8'));
     let statistics = new Statistics();
     data.bZero = statistics.getBZero(list, 2);
     data.bOne = statistics.getBOne(list, 2);
@@ -22,7 +22,7 @@ function getRegression(req, res) {
 
 function getCorrelation(req, res) {
     let data = {};
-    let list  = req.body;
+    var list  = JSON.parse(req.file.buffer.toString('utf8'));
     let statistics = new Statistics();
     data.r = statistics.getCorrelation(list, 4);
     data.rSquare = statistics.getRSquared(list, 4);
@@ -30,8 +30,10 @@ function getCorrelation(req, res) {
 }
 
 function getEstimate(req, res) {
+    let data = {};
+    var list  = JSON.parse(req.file.buffer.toString('utf8'));
     let yEstimate = 0;
-    let list  = req.body.list;
+    // let list  = req.body.list;
     let xEstimate  = req.body.xEstimate;
     let statistics = new Statistics();
     yEstimate = statistics.getYEstimate(list, xEstimate, 3);

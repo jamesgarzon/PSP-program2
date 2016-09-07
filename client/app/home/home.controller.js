@@ -2,7 +2,7 @@
 (function(){
 
 class HomeComponent {
-  constructor() {
+  constructor(Stats) {
     this.message = 'Hello';
   }
 }

@@ -1,0 +1,26 @@
+Wellcome to the second program psp
+
+
+<div class="col s8">
+	<div class="row">
+		<div class="col s4">
+			<b>IMAGEN</b>
+			<a class="waves-effect waves-light btn btn-floating indigo" ngf-select="vm.getStatistics($file)" ><i class="material-icons right">insert_photo</i></a>
+		</div>
+		<div class="col s8">
+		</div>
+	</div>
+</div>
+
+REGRESSION
+<p> BettaZero : {{vm.regression.bZero}} </p>
+<p> BettaOne : {{vm.regression.bOne}} </p>
+
+<hr>
+CORRELATION
+<p> R : {{vm.correlation.r}} </p>
+<p> R² : {{vm.correlation.rSquare}} </p>
+<hr>
+
+ESTIMATE
+<p> Y(Estimado) : {{vm.yEstimate}} </p>
