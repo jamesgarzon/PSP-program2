@@ -11,7 +11,7 @@ class HomeComponent {
   	console.log("getStatistics");
   	this.getRegression(file);
   	this.getCorrelation(file);
-  	this.getEstimated(file, 386);
+  	this.getEstimated(file, xEstimate);
 
   }
 

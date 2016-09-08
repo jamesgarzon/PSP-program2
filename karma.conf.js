@@ -10,24 +10,48 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha', 'sinon-chai', 'chai'],
 
 
     // list of files / patterns to load in the browser
     files: [
-    	'bower_components/angular/angular.js',
-    	'bower_components/angular-mocks/angular-mocks.js',
+    	'client/bower_components/angular/angular.js',
+        'client/bower_components/angular-mocks/angular-mocks.js',
+        'client/bower_components/angular-ui-router/release/angular-ui-router.js',
+    	'client/bower_components/ng-file-upload/ng-file-upload.js',
+        // 'client/app/PSP2/psp2.js',
+        'client/app/app.js',
+        'client/services/**/*.js',
+        // 'client/app/PSP2/*.js',
     	'client/test/**/*.js'
     ],
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
+
+    // plugins: [
+    //   // require('karma-chai-plugins'),
+    //   // require('karma-chrome-launcher'),
+    //   require('karma-coverage'),
+    //   // require('karma-firefox-launcher'),
+    //   require('karma-mocha'),
+    //   require('sinon-mocha'),
+    //   // require('karma-chai-plugins'),
+
+    //   // require('karma-spec-reporter'),
+    //   require('karma-phantomjs-launcher'),
+    //   // require('karma-script-launcher'),
+    //   require('karma-webpack')
+    //   // require('karma-sourcemap-loader')
+    // ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        // 'client/test/*_test.js': ['webpack'],
+        // 'client/test/main*.js': ['coverage']
+        // 'test/test_index.js': ['webpack']
     },
 
 
