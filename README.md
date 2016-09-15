@@ -5,8 +5,11 @@
 * npm install
 * bower install
 
-###Para correr el proyecto
+###Para correr el proyecto en Linux
 * npm start
+
+###Para correr el proyecto en Windows
+* npm run start_windows
 
 ###Para correr las pruebas
 * npm test
