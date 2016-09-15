@@ -4,20 +4,47 @@
 <br>
 <div class="container">
 		<div class="row">
-			<div class="col s6">
+			<div class="col s4">
 				<b>DATOS</b>
 				<br>
-				<a class="waves-effect waves-light btn  indigo" ngf-select="vm.getStatistics($file)" ng-disabled="!vm.xEstimate" >Seleccionar datos <i class="material-icons right">storage</i></a>
+				<a class="waves-effect waves-light btn  indigo" ngf-select="vm.getFile($file)">Seleccionar datos <i class="material-icons right">storage</i></a>
 			</div>
-			<div class="input-field col s6">
+			<div class="input-field col s4">
 	          <input id="first_name" type="text" class="validate" ng-model="vm.xEstimate">
 	          <label for="first_name">X Estimado</label>
 	        </div>
-			<br>
+      <br>
+
+          <div class="col s4">
+      <a class="waves-effect waves-light btn  indigo" ng-click= "vm.getStatistics(vm.file, vm.xEstimate)" ng-disabled="!vm.xEstimate || !vm.data" >Obtener estadisticas <i class="material-icons right">storage</i></a>
+    </div>
 	</div>
-    <div class="row" ng-if="vm.regression">
-      
-      <div class="col s12 m4">
+  <!-- <div class="row"> -->
+    
+  <!-- </div> -->
+    <div class="row" >
+      <div class="col s12 m6" >
+        <table ng-if="vm.file">
+        <thead>
+          <tr>
+              <th data-field="id">X</th>
+              <th data-field="name">Y</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="d in vm.data">
+            <td>{{d[0]}}</td>
+            <td>{{d[1]}}</td>
+          </tr>
+          <tr>
+
+        </tbody>
+      </table>
+      </div>
+        
+
+      <div class="col s12 m6" ng-if="vm.regression">
         <div class="card-panel teal">
         <h5 class="white-text">REGRESIÓN</h5>
           <span class="white-text">
@@ -25,9 +52,9 @@
           <p><b>&beta;<sub>1</sub> :</b> {{vm.regression.bOne}} </p>
           </span>
         </div>
-      </div>
+<!--       </div>
 
-      <div class="col s12 m4">
+      <div class="col s12 m6"> -->
         <div class="card-panel teal">
         <h5 class="white-text">CORRELACIÓN</h5>
           <span class="white-text">
@@ -35,9 +62,9 @@
           <p><b>R<sup>2</sup> :</b> {{vm.regression.bOne}} </p>
           </span>
         </div>
-      </div>
+<!--       </div>
 
-      <div class="col s12 m4">
+      <div class="col s12 m6"> -->
         <div class="card-panel teal">
         <h5 class="white-text">ESTIMADO</h5>
           <span class="white-text">

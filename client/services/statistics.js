@@ -47,6 +47,19 @@ class ThingFactory {
 	return promise;
 	};
 
+	getData(file) {
+	let defered = this.$q.defer();
+	let promise = defered.promise;
+        this.Upload.upload({ url: 'statistics/data', data: {data: file}})
+        .success(function(data) {
+				defered.resolve(data);
+		})
+		.error(function(err) {
+				defered.reject(err);
+		});
+	return promise;
+	};
+
 }
 
 angular.module('pspApp')

@@ -7,11 +7,21 @@ class HomeComponent {
     this.Stats = Stats;
   }
 
+  getFile(file){
+    this.getData(file);
+    this.file = file;
+    this.regression = undefined;
+  }
+
   getStatistics(file, xEstimate){
-  	console.log("getStatistics");
-  	this.getRegression(file);
-  	this.getCorrelation(file);
-  	this.getEstimated(file, 386);
+    if (file) {
+    console.log("getStatistics");
+    this.getRegression(this.file);
+    this.getCorrelation(this.file);
+    this.getEstimated(this.file, xEstimate);  
+    }
+  	
+    // this.getData(file);
 
   }
 
@@ -35,6 +45,13 @@ class HomeComponent {
   	.then(yEstimate=>{
   		this.yEstimate = yEstimate;
   	})
+  }
+
+  getData(file){
+    this.Stats.getData(file)
+    .then(data=>{
+      this.data = data;
+    })
   }
 
 }

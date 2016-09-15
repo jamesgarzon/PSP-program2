@@ -40,4 +40,10 @@ function getEstimate(req, res) {
     res.json(yEstimate);
 }
 
-module.exports = { getMean, getRegression, getCorrelation, getEstimate };
+function getData(req, res) {
+    let data = {};
+    var list  = JSON.parse(req.file.buffer.toString('utf8'));
+    res.json(list);
+}
+
+module.exports = { getMean, getRegression, getCorrelation, getEstimate, getData };

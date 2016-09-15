@@ -53,6 +53,9 @@ function Statistics() {
   }
 
   function getBOne(numbers, decimals){
+    if (numbers.length<1) {
+      throw new Error('La lista no puede ser vacia');
+    }
     var bOne = 0;
     var x = [];
     var y = [];

@@ -1,3 +1,4 @@
+
 process.env.NODE_ENV = 'test';
 
 let chai = require('chai');
@@ -89,6 +90,19 @@ describe('BettaOne (B1)', () => {
     beforeEach((done) => {
         done();
     });
+    function iThrowError() {
+    throw new Error("Error thrown");
+}
+
+    describe('Get B1 with good data', function() {
+    it('List should start empty', function() {
+        let numbers = [];
+        let statistics = new Statistics();
+      var err = new Error('Error thrown');
+       assert.throws(function(){statistics.getBOne(numbers, 3)}, Error, "La lista no puede ser vacia");
+    });
+    });
+
 
     describe('Get B1 with good data', function() {
         it('List should start empty', function() {
