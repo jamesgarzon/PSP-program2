@@ -1,4 +1,5 @@
-[https://travis-ci.org/jamesgarzon/PSP-program2.svg?branch=master]
+[![Build Status](https://travis-ci.org/jamesgarzon/PSP-program2.svg?branch=master)]
+
 
 # PSP-program2
 
